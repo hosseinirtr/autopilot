@@ -1,5 +1,3 @@
-Sure, here's an example README.md file you could use for your project:
-
 # End-to-End Autonomous Driving Project
 
 This project is a contribution to a PhD thesis on end-to-end autonomous driving at New York University. The goal of the project is to develop a system that can drive a vehicle without human intervention, using computer vision and machine learning techniques.
