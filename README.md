@@ -1,6 +1,6 @@
 # End-to-End Autonomous Driving Project
 
-This project is a contribution to a PhD thesis on end-to-end autonomous driving at New York University. The goal of the project is to develop a system that can drive a vehicle without human intervention, using computer vision and machine learning techniques.
+This project is a contribution to a PhD thesis on end-to-end autonomous driving at New York University. The goal of the thesis is to develop a system that can drive a vehicle without human intervention, using computer vision and machine learning techniques but my goal is create a autonomous race car.
 
 ## Phase One: Finding Lines in Video
 
