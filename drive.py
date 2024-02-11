@@ -6,11 +6,17 @@ import base64
 from io import BytesIO
 from PIL import Image
 import cv2
+import socketio 
+import logging  # Import the logging module
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
 
 sio = socketio.Server()
 
-app = Flask(__name__) #'__main__'
+app = Flask(__name__)
 speed_limit = 10
+
 def img_preprocess(img):
     img = img[60:135,:,:]
     img = cv2.cvtColor(img, cv2.COLOR_RGB2YUV)
@@ -18,7 +24,6 @@ def img_preprocess(img):
     img = cv2.resize(img, (200, 66))
     img = img/255
     return img
-
 
 @sio.on('telemetry')
 def telemetry(sid, data):
@@ -29,14 +34,12 @@ def telemetry(sid, data):
     image = np.array([image])
     steering_angle = float(model.predict(image))
     throttle = 1.0 - speed/speed_limit
-    print('{} {} {}'.format(steering_angle, throttle, speed))
+    logging.info('Telemetry: {} {} {}'.format(steering_angle, throttle, speed))
     send_control(steering_angle, throttle)
-
-
 
 @sio.on('connect')
 def connect(sid, environ):
-    print('Connected')
+    logging.info('Connected: {}'.format(sid))
     send_control(0, 0)
 
 def send_control(steering_angle, throttle):
@@ -45,8 +48,7 @@ def send_control(steering_angle, throttle):
         'throttle': throttle.__str__()
     })
 
-
 if __name__ == '__main__':
-    model = load_model('model.h5')
+    model = load_model('./model.h5')
     app = socketio.Middleware(sio, app)
     eventlet.wsgi.server(eventlet.listen(('', 4567)), app)
