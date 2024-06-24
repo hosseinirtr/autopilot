@@ -1,9 +1,9 @@
-
+%%time
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-image = cv2.imread('./road_test.jpg')
+image = cv2.imread('./assets/road_test.jpg')
 lane_img = np.copy(image)
 
 
@@ -105,7 +105,7 @@ def region_of_interst(image):
 
 
 # In[9]:
-cap = cv2.VideoCapture('./test2.mp4')
+cap = cv2.VideoCapture('./assets/test2.mp4')
 while (cap.isOpened()):
     _, frame = cap.read()
     canny_frame = canny(frame)
