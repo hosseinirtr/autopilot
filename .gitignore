@@ -1,0 +1,5 @@
+venv
+data
+data_sim/
+sim*
+term*
