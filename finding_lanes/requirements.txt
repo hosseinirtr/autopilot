@@ -98,7 +98,7 @@ sshuttle==1.0.5
 sympy==1.12
 systemd-python==234
 tokenizers==0.15.0
-torch==2.1.2
+torch==2.2.0
 tqdm==4.66.1
 transformers==4.36.2
 triton==2.1.0
